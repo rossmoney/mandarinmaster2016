@@ -1,4 +1,5 @@
 var panel = false;
+var currentPanel = 1;
 
 $( document ).ready(function() {
    setInterval(function() {
@@ -9,10 +10,22 @@ $( document ).ready(function() {
     }
    }, 1000);
 
+   setInterval(function() {
+    currentPanel++;
+    if(currentPanel > 3) currentPanel = 1;
+    for(var i = 1; i <= 3; i++) {
+        if(i == currentPanel) {
+            $('.intro__panel').eq(currentPanel-1).fadeIn();
+        } else {
+            $('.intro__panel').eq(i-1).fadeOut();
+        }
+    }
+   }, 5000);
+
  $('.homepage').mousemove(function() {
     panel = true;
     $('.intro').show();
-    $('.intro__panel').eq(1).fadeIn();
+    $('.intro__panel').eq(0).fadeIn();
     $('.homepage__background').css('height', '75vh');
     $('.homepage__forbidden_doors').css('top', '41%');
     $('.homepage__forbidden_doors').css('height', '9.8%');
