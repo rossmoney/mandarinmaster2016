@@ -13,7 +13,7 @@ if(!process.env.MONGOLAB_URI) {
     require('dotenv').config();
 }
 
-require('./models/Users');
+require('./models/users');
 
 var mongoUri = process.env.MONGOLAB_URI; // || 'mongodb://localhost/mandarinmaster2016';
 mongoose.connect(mongoUri);
