@@ -2,10 +2,48 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/css/main.css' />
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+  <body ng-app="mandarinMaster" ng-controller="mandarinMaster" class="homepage">
+
+    <div class="homepage__background"></div>
+    <div class="homepage__forbidden_doors"></div>
+    <ui-view></ui-view>
+
+    <div class="intro">
+      <div class="intro__panel">
+        <div class="intro__title">Professional</div>
+        <div class="intro__text">
+        Our course is tailored to the UK national curriculum and all activities are crosslinked to the national curriculum to help learners build a solid foundation in Mandarin Chinese. The course is designed by a native Mandarin speaker and a qualified teacher from the UCL Institute of Education, the world’s leading centre for education and teacher training.
+        </div>
+      </div>
+      <div class="intro__panel">
+        <div class="intro__title">Our Mission</div>
+        <div class="intro__text">
+        Is to help learners make substantial progress in Mandarin Chinese by focussing on practical communication and equipping learners with skills that can be applied in every day circumstances. We know that learning Chinese can be a daunting challenge so our mission is to make the learning journey as fun for you as possible.
+        </div>
+      </div>
+      <div class="intro__panel">
+        <div class="intro__title">Chinese simplified</div>
+        <div class="intro__text">
+        The online course is divided into topics which assume no prior knowledge of Mandarin Chinese. They start easy and become progressively more challenging as the learners advance through games and activities. Everything has been designed to give the learner an experience that is fully interactive, intuitive and immersive. 
+        </div>
+      </div>
+    </div>
+
+    <script type="text/ng-template" id="/login.html">
+      <div class="login">
+        <div class="login__logo"></div>
+        <form class="login__form" ng-submit="login()">
+          <input class="login__input" type="text" ng-model="email" placeholder="Email address"></input>
+          <input class="login__input" type="password" ng-model="password" placeholder="Password"></input>
+          <button class="login__button" type="submit">Sign in</button>
+        </form>
+      </div>
+    </script>
   </body>
 </html>

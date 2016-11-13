@@ -5,14 +5,25 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var livereload = require('livereload');
+var server = livereload.createServer();
+server.watch(__dirname + "/public");
 
-var index = require('./routes/index');
-var users = require('./routes/users');
+if(!process.env.MONGOLAB_URI) {
+    require('dotenv').config();
+}
 
-var app = express();
+require('./models/Users');
 
 var mongoUri = process.env.MONGOLAB_URI; // || 'mongodb://localhost/mandarinmaster2016';
 mongoose.connect(mongoUri);
+
+var app = express();
+
+var index = require('./routes/index');
+var users = require('./routes/users');
+app.use('/', index);
+app.use('/users', users);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,9 +36,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', index);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
