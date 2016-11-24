@@ -13,17 +13,18 @@ if(!process.env.MONGOLAB_URI) {
     require('dotenv').config();
 }
 
-require('./models/users');
+require('./models/user');
+require('./models/session');
 
 var mongoUri = process.env.MONGOLAB_URI; // || 'mongodb://localhost/mandarinmaster2016';
 mongoose.connect(mongoUri);
 
 var app = express();
 
+var api = require('./routes/api')(app);
+
 var index = require('./routes/index');
-var users = require('./routes/users');
 app.use('/', index);
-app.use('/users', users);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

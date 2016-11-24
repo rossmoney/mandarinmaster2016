@@ -27,8 +27,22 @@ gulp.task("angular", function() {
     .pipe(gulp.dest("public/js"));
 });
 
-gulp.task("angularuirouter", function() {
-  return gulp.src("node_modules/angular-ui-router/release/angular-ui-router.min.js")
+gulp.task("angularresource", function() {
+  return gulp.src("node_modules/angular-resource/angular-resource.min.js")
+    .pipe(include())
+      .on('error', console.log)
+    .pipe(gulp.dest("public/js"));
+});
+
+gulp.task("moment", function() {
+  return gulp.src("node_modules/moment/min/moment.min.js")
+    .pipe(include())
+      .on('error', console.log)
+    .pipe(gulp.dest("public/js"));
+});
+
+gulp.task("angular-route", function() {
+  return gulp.src("node_modules/angular-route/angular-route.min.js")
     .pipe(include())
       .on('error', console.log)
     .pipe(gulp.dest("public/js"));
@@ -81,7 +95,7 @@ gulp.task('clean', function() {
 
 // Default task
 gulp.task('default', ['clean'], function() {
-  gulp.start('styles', 'images', 'angular', 'angularuirouter', 'jquery', 'scripts');
+  gulp.start('styles', 'images', 'angular', 'angular-route', 'angularresource', 'moment', 'jquery', 'scripts');
 });
 
 // Watch
