@@ -1,4 +1,4 @@
-angular.module('myApp.logout', ['ngRoute', 'ngResource'])
+angular.module('mandarinMaster.logout', ['ngRoute', 'ngResource'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/logout', {
@@ -20,6 +20,6 @@ angular.module('myApp.logout', ['ngRoute', 'ngResource'])
         $rootScope.globals = {};
         $cookieStore.remove('globals');
         $http.defaults.headers.common.Authorization = 'Basic';
-        $location.path('/login');
+        $location.path('/');
     
 }]);

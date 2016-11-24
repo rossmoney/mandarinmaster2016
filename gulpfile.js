@@ -21,13 +21,13 @@ var gulp = require('gulp'),
     include = require("gulp-include");
  
 gulp.task("angular", function() {
-  return gulp.src("node_modules/angular/angular.min.js")
+  return gulp.src("node_modules/angular/angular.js")
     .pipe(include())
       .on('error', console.log)
     .pipe(gulp.dest("public/js"));
 });
 
-gulp.task("angularresource", function() {
+gulp.task("angular-resource", function() {
   return gulp.src("node_modules/angular-resource/angular-resource.min.js")
     .pipe(include())
       .on('error', console.log)
@@ -48,8 +48,22 @@ gulp.task("angular-route", function() {
     .pipe(gulp.dest("public/js"));
 });
 
+gulp.task("angular-cookies", function() {
+  return gulp.src("node_modules/angular-cookies/angular-cookies.min.js")
+    .pipe(include())
+      .on('error', console.log)
+    .pipe(gulp.dest("public/js"));
+});
+
 gulp.task("jquery", function() {
   return gulp.src("node_modules/jquery/dist/jquery.min.js")
+    .pipe(include())
+      .on('error', console.log)
+    .pipe(gulp.dest("public/js"));
+});
+
+gulp.task("md5", function() {
+  return gulp.src("node_modules/blueimp-md5/js/md5.js")
     .pipe(include())
       .on('error', console.log)
     .pipe(gulp.dest("public/js"));
@@ -95,7 +109,7 @@ gulp.task('clean', function() {
 
 // Default task
 gulp.task('default', ['clean'], function() {
-  gulp.start('styles', 'images', 'angular', 'angular-route', 'angularresource', 'moment', 'jquery', 'scripts');
+  gulp.start('styles', 'images', 'angular', 'angular-route', 'angular-resource', 'angular-cookies', 'md5','moment', 'jquery', 'scripts');
 });
 
 // Watch

@@ -1,0 +1,31 @@
+<form class="form-horizontal" ng-submit="addUser()">
+<fieldset>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="email">email</label>  
+  <div class="col-md-4">
+  <input id="email" name="email" type="text" ng-model="user.email" placeholder="" class="form-control input-md" required=""> 
+  </div>
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="password">Password</label>
+  <div class="col-md-4">
+    <input id="password" name="password" type="password" ng-model="user.password" placeholder="" class="form-control input-md" required="">
+    <span class="help-block">must be 8 characters</span>
+  </div>
+</div>
+
+<!-- Button (Double) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="addUser"></label>
+  <div class="col-md-8">
+    <input type="submit" id="addUser" name="addUser" class="btn btn-success" value="Save User" />
+    <button type="button" class="btn btn-danger" ng-click="cancelAddUser()">Cancel</button>
+  </div>
+</div>
+
+</fieldset>
+</form>

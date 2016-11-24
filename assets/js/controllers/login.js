@@ -2,7 +2,7 @@ angular.module('mandarinMaster.login', ['ngRoute', 'ngResource', 'ngCookies'])
 
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {
-        templateUrl: 'views/index.ejs',
+        templateUrl: 'views/index.html',
         controller: 'LoginController'
     });
 }])
@@ -46,7 +46,7 @@ angular.module('mandarinMaster.login', ['ngRoute', 'ngResource', 'ngCookies'])
                     }).update(editData).$promise.then(function() {
                         $scope.email = 'Invalid Login!';
                         alert('Your password has been in use for 30 days and has now expired. Please contact the system admin for a new one.');
-                        $location.path('/login');
+                        $location.path('/');
                     });
                 } else {
                 
@@ -75,6 +75,7 @@ angular.module('mandarinMaster.login', ['ngRoute', 'ngResource', 'ngCookies'])
                 }
                 }
             });
+                console.log($scope.found);
             
             if(!$scope.found) {
                 $scope.email = 'Invalid Login!';

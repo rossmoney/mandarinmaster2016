@@ -4,7 +4,8 @@ angular.module('mandarinMaster', [
   'ngResource',
   'mandarinMaster.logout',
   'mandarinMaster.login',
-  'mandarinMaster.users'
+  'mandarinMaster.users',
+  'mandarinMaster.AddUsers'
 ])
 .factory('httpRequestInterceptor', '$rootScope', '$location', function ($rootScope, $location) {
   return {
@@ -53,7 +54,7 @@ angular.module('mandarinMaster', [
  
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             
-            var restrictedPage = $.inArray($location.path(), ['/', '/login', '/logout']) === -1;
+            var restrictedPage = $.inArray($location.path(), ['/', '/logout', '/users/add']) === -1;
             
             if(restrictedPage && $rootScope.globals.currentUser) {
                 $resource('/sessions/:_id', { _id: $rootScope.globals.currentUser.tokenid}).get(function(result) {
@@ -67,7 +68,7 @@ angular.module('mandarinMaster', [
                     $rootScope.globals = {};
                     $cookieStore.remove('globals');
                     $http.defaults.headers.common.Authorization = 'Basic';
-                    $location.path('/login');
+                    $location.path('/');
                 }
                 });
             }
@@ -76,7 +77,7 @@ angular.module('mandarinMaster', [
             
             var loggedIn = $rootScope.globals.currentUser;
             if (restrictedPage && !loggedIn) {
-                $location.path('/login');
+                $location.path('/');
             }
         });
     }

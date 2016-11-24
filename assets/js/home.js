@@ -30,10 +30,10 @@ $( document ).ready(function() {
     $('.homepage__forbidden_doors').css('top', '41%');
     $('.homepage__forbidden_doors').css('height', '9.8%');
   });
-});
 
-$('.homepage__forbidden_doors').click(function() {
+  $('.homepage__forbidden_doors').click(function() {
     $('.login').css('display', 'block');
+  });
 });
 
 $(window).resize(function(){
